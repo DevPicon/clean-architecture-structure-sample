@@ -5,5 +5,7 @@ import pe.devpicon.android.cleanarch.domain.usecase.AddBookUseCase
 
 class MainViewModel(
     val addBookUseCase: AddBookUseCase
-): ViewModel() {
+) : ViewModel() {
 }
+
+
