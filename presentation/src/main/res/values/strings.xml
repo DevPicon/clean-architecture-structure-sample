@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">My Clean Architecture Application</string>
+    <string name="content_description_book_cover">book cover</string>
+    <string name="content_description_add_book_button">Add Book</string>
 </resources>
