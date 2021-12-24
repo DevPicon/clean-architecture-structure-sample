@@ -1,4 +1,4 @@
-package pe.devpicon.android.mycleanarchitectureapplication
+package pe.devpicon.android.mycleanarchitectureapplication.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
