@@ -10,4 +10,5 @@
     android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
     tools:context=".ui.listbook.ListBookFragment"
-    tools:listitem="@layout/fragment_list_book" />
+    tools:itemCount="7"
+    tools:listitem="@layout/item_book" />

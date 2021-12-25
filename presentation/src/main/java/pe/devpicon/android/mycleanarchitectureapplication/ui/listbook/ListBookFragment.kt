@@ -1,28 +1,31 @@
 package pe.devpicon.android.mycleanarchitectureapplication.ui.listbook
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import pe.devpicon.android.mycleanarchitectureapplication.R
+import pe.devpicon.android.mycleanarchitectureapplication.application.BookApplication
+import pe.devpicon.android.mycleanarchitectureapplication.ui.MainViewModelFactory
 
 /**
  * A fragment representing a list of Items.
  */
 class ListBookFragment : Fragment() {
 
-    private var columnCount = 1
+    private val listBookViewModel: ListBookViewModel by viewModels {
+        MainViewModelFactory((requireActivity().application as BookApplication).applicationContainer)
+    }
+    private val bookAdapter: BookViewRecyclerViewAdapter by lazy {
+        BookViewRecyclerViewAdapter(listOf())
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
     }
 
     override fun onCreateView(
@@ -34,28 +37,28 @@ class ListBookFragment : Fragment() {
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
-                layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }
-                adapter = BookViewRecyclerViewAdapter(listOf())
+                layoutManager = LinearLayoutManager(context)
+                adapter = bookAdapter
             }
         }
         return view
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        listBookViewModel.bookViewList.observe(viewLifecycleOwner, {
+            bookAdapter.updateList(it)
+        })
+    }
+
     companion object {
 
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
 
         // TODO: Customize parameter initialization
         @JvmStatic
         fun newInstance(columnCount: Int) =
             ListBookFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
-                }
+                arguments = Bundle()
             }
     }
 }

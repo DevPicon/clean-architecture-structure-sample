@@ -11,7 +11,7 @@ import pe.devpicon.android.mycleanarchitectureapplication.databinding.ItemBookBi
  * TODO: Replace the implementation with code for your data type.
  */
 class BookViewRecyclerViewAdapter(
-    private val values: List<BookView>
+    private var values: List<BookView>
 ) : RecyclerView.Adapter<BookViewRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -46,6 +46,11 @@ class BookViewRecyclerViewAdapter(
             bookAuthorView.text = item.author
             bookTitleView.text = item.title
         }
+    }
+
+    fun updateList(newValues: List<BookView>){
+        values = newValues
+        notifyDataSetChanged()
     }
 
 }
