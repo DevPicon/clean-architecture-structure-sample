@@ -2,4 +2,6 @@
     <string name="app_name">My Clean Architecture Application</string>
     <string name="content_description_book_cover">book cover</string>
     <string name="content_description_add_book_button">Add Book</string>
+    <string name="title_book_name">Book name</string>
+    <string name="title_book_author">Author name</string>
 </resources>
