@@ -11,10 +11,12 @@ import pe.devpicon.android.cleanarch.data.datasource.local.BookEntity
 abstract class BookDatabase : RoomDatabase() {
     abstract fun bookDao(): BookDao
 
-    companion object{
+    companion object {
         fun createBookDatabase(context: Context): BookDatabase = Room.databaseBuilder(
             context,
             BookDatabase::class.java, "book-database"
-        ).build()
+        )
+            .createFromAsset("database/book.db")
+            .build()
     }
 }

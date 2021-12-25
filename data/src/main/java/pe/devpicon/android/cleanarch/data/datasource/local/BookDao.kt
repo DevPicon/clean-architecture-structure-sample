@@ -7,7 +7,7 @@ import androidx.room.Query
 @Dao
 interface BookDao {
 
-    @Query("SELECT * FROM BookEntity")
+    @Query("SELECT * FROM books")
     fun getAll():List<BookEntity>
 
     @Insert
