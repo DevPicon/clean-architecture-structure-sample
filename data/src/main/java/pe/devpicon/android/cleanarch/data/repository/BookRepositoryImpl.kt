@@ -11,7 +11,7 @@ class BookRepositoryImpl @Inject constructor(
     private val bookDataSource: BookDataSource,
     private val bookMapper: BookMapper
 ) : BookRepository {
-    override fun getBooks(): List<Book> {
+    override suspend fun getBooks(): List<Book> {
         return bookDataSource
             .getBooks()
             .map { bookEntity: BookEntity -> bookMapper.fromBookEntity(bookEntity) }
