@@ -1,12 +1,15 @@
 package pe.devpicon.android.cleanarch.data.datasource.local
 
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import pe.devpicon.android.cleanarch.data.datasource.BookDataSource
+import javax.inject.Inject
 
-class LocalBookDataSource(
+class LocalBookDataSource @Inject constructor(
     private val bookDao: BookDao
-): BookDataSource {
-    override fun getBooks(): List<BookEntity> {
-        TODO("Not yet implemented")
+) : BookDataSource {
+    override suspend fun getBooks(): List<BookEntity> = withContext(Dispatchers.IO) {
+        bookDao.getAll()
     }
 
 }

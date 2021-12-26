@@ -10,10 +10,7 @@ class MainViewModelFactory(private val applicationContainer: ApplicationContaine
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return with(modelClass) {
             when {
-                isAssignableFrom(MainViewModel::class.java) -> MainViewModel(
-                    applicationContainer.addBookUseCase
-                )
-                isAssignableFrom(ListBookViewModel::class.java) -> ListBookViewModel()
+                isAssignableFrom(MainViewModel::class.java) -> MainViewModel( )
                 else -> error("Unknown ViewModel class: ${modelClass.name}")
             } as T
         }

@@ -8,18 +8,22 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 import pe.devpicon.android.mycleanarchitectureapplication.R
 import pe.devpicon.android.mycleanarchitectureapplication.application.BookApplication
 import pe.devpicon.android.mycleanarchitectureapplication.ui.MainViewModelFactory
+import javax.inject.Inject
 
 /**
  * A fragment representing a list of Items.
  */
+@AndroidEntryPoint
 class ListBookFragment : Fragment() {
 
-    private val listBookViewModel: ListBookViewModel by viewModels {
+    private val listBookViewModel: ListBookViewModel by viewModels()
+    /*by viewModels {
         MainViewModelFactory((requireActivity().application as BookApplication).applicationContainer)
-    }
+    }*/
     private val bookAdapter: BookViewRecyclerViewAdapter by lazy {
         BookViewRecyclerViewAdapter(listOf())
     }
