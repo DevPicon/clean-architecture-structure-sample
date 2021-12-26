@@ -24,7 +24,7 @@ object RoomModule {
             context,
             BookDatabase::class.java, "book-database"
         )
-            .createFromAsset("database/book.db")
+            .createFromAsset("database/book-database")
             .build()
         return bookDatabase
     }
