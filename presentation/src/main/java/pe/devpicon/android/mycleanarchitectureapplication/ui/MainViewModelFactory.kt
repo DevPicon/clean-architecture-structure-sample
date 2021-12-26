@@ -13,7 +13,9 @@ class MainViewModelFactory(private val applicationContainer: ApplicationContaine
                 isAssignableFrom(MainViewModel::class.java) -> MainViewModel(
                     applicationContainer.addBookUseCase
                 )
-                isAssignableFrom(ListBookViewModel::class.java) -> ListBookViewModel()
+                isAssignableFrom(ListBookViewModel::class.java) -> ListBookViewModel(
+                    applicationContainer.getBooksUseCase
+                )
                 else -> error("Unknown ViewModel class: ${modelClass.name}")
             } as T
         }

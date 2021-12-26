@@ -3,8 +3,14 @@ package pe.devpicon.android.mycleanarchitectureapplication.ui.listbook
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import dagger.hilt.android.lifecycle.HiltViewModel
+import pe.devpicon.android.cleanarch.domain.usecase.GetBooksUseCase
+import javax.inject.Inject
 
-class ListBookViewModel : ViewModel() {
+@HiltViewModel
+class ListBookViewModel @Inject constructor(
+    private val getBooksUseCase: GetBooksUseCase
+) : ViewModel() {
 
     private var _bookViewList: MutableLiveData<List<BookView>> = MutableLiveData(
         listOf<BookView>(
