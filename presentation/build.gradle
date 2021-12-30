@@ -38,6 +38,8 @@ android {
 
 dependencies {
 
+    implementation project(path: ':di-domain')
+    implementation project(path: ':di-data')
     implementation project(path: ':domain')
     implementation project(path: ':data')
 

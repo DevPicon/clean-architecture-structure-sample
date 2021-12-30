@@ -1,4 +1,4 @@
-package pe.devpicon.android.cleanarch.data.di
+package pe.devpicon.android.data.di
 
 import android.content.Context
 import androidx.room.Room

@@ -1,4 +1,4 @@
-package pe.devpicon.android.mycleanarchitectureapplication.di
+package pe.devpicon.android.di.domain
 
 import dagger.Module
 import dagger.Provides
