@@ -10,5 +10,4 @@ rootProject.name = "My Clean Architecture Application"
 include ':presentation'
 include ':data'
 include ':domain'
-include ':di-data'
-include ':di-domain'
+include ':di-usecase'
